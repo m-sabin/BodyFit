@@ -1,4 +1,4 @@
-    package com.example.bodyfit.ui.theme
+package com.example.bodyfit.core.theme
 
 import androidx.compose.ui.graphics.Color
 
