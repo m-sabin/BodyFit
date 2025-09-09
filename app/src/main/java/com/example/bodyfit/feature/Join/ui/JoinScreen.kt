@@ -68,16 +68,7 @@ fun JoinScreen(navController: NavHostController = rememberNavController()) {
                 onValueChange = {email = it},
                 modifier = Modifier.fillMaxWidth(),
                 placeholder = {Text("Digite seu email")},
-                singleLine = true,
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    textColor = MaterialTheme.colorScheme.onBackground,
-                    placeholderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f),
-                    focusedBorderColor = Color(0xFFDAFF62),
-                    unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f),
-                    cursorColor = Color(0xFFDAFF62)
-                )
-
-
+                singleLine = true
             )
 
             Spacer(Modifier.height(16.dp))

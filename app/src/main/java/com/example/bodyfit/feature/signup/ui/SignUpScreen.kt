@@ -13,8 +13,10 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -93,7 +96,19 @@ fun SignUpScreen(navController: NavHostController = rememberNavController()) {
                 onValueChange = { phone = it },
                 placeholder = { Text("Telefone") },
                 singleLine = true,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    color = MaterialTheme.colorScheme.onBackground
+                ),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color(0xFFDAFF62),
+                    unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f),
+                    focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f),
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f),
+                    cursorColor = Color(0xFFDAFF62)
+                )
+
 
             )
             Spacer(Modifier.height(16.dp))
@@ -104,8 +119,7 @@ fun SignUpScreen(navController: NavHostController = rememberNavController()) {
                 placeholder = { Text("Senha") },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(),
-
-                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation()
+                visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation()
             )
             Spacer(Modifier.height(16.dp))
 
@@ -115,11 +129,12 @@ fun SignUpScreen(navController: NavHostController = rememberNavController()) {
                 placeholder = { Text("Confirmar Senha") },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(),
-                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation()
+                visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation()
             )
 
-            Row(modifier = Modifier
-                .fillMaxWidth(),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Checkbox(
