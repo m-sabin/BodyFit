@@ -26,9 +26,9 @@ data class BottomNavItem(
 @Composable
 fun BottomNavbar(navController: NavHostController) {
     val items = listOf(
-        BottomNavItem("Home", "home", Icons.Default.Home),
-        BottomNavItem("Activity", "activity", Icons.Default.CheckCircle),
-        BottomNavItem("Profile", "profile", Icons.Default.Person),
+        BottomNavItem("Home", Screen.Home.route, Icons.Default.Home),
+        BottomNavItem("Activity", Screen.Activity.route, Icons.Default.CheckCircle),
+        BottomNavItem("Profile", Screen.Profile.route, Icons.Default.Person)
     )
 
     NavigationBar {
@@ -39,7 +39,13 @@ fun BottomNavbar(navController: NavHostController) {
                 icon = { Icon(item.icon, contentDescription = item.label) },
                 label = { Text(item.label) },
                 selected = currentRoute == item.route,
-                onClick = {navController.navigate(item.route)}
+                onClick = {
+                    navController.navigate(item.route) {
+                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
             )
         }
     }

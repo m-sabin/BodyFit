@@ -1,5 +1,7 @@
 package com.example.bodyfit.core.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -19,6 +21,7 @@ sealed class Screen(val route: String) {
     object Activity: Screen("activity")
     object Profile: Screen("profile")
 }
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun BodyFitNavHost(navController: NavHostController){
     NavHost(

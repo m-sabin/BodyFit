@@ -39,10 +39,10 @@ import com.example.bodyfit.core.navigation.BottomNavbar
 @SuppressLint("SuspiciousIndentation")
 @Composable
 fun HomeScreen() {
-    val navController = rememberNavController()
+    
 
     Scaffold(
-        bottomBar = { BottomNavbar(navController) },
+
         content = { padding ->
             Column(
                 modifier = Modifier
@@ -117,9 +117,11 @@ fun BestForYouSection(
     )
 ) {
     Text(
-        text = "Os Melhores para Você",
-        fontSize = 20.sp,
-        fontWeight = FontWeight.Bold,
+        text = "Para Você",
+        style = MaterialTheme.typography.headlineLarge.copy(
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
+        ),
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 8.dp)
     )
@@ -166,8 +168,10 @@ fun HomePopularSection(
 ) {
     Text(
         text = "Populares",
-        fontSize = 20.sp,
-        fontWeight = FontWeight.Bold,
+        style = MaterialTheme.typography.headlineLarge.copy(
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
+        ),
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(start = 8.dp, top = 16.dp, bottom = 8.dp)
     )
